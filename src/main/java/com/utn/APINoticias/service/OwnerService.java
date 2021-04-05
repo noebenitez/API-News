@@ -17,7 +17,6 @@ public class OwnerService {
     private NewsService newsService;
 
     @Autowired
-
     public OwnerService(OwnerRepository ownerRepository, NewsService newsService) {
         this.ownerRepository = ownerRepository;
         this.newsService = newsService;

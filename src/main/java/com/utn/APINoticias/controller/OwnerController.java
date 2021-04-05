@@ -39,13 +39,13 @@ public class OwnerController {
         return owner;
     }
 
-    @DeleteMapping("/owner/{id}")
+    @DeleteMapping("{id}")
     public void deleteOwner(@PathVariable Integer id){
         ownerService.deleteById(id);
     }
 
     @PutMapping("/{id}/news/{idNews}")
-    public void addNewsToOwner(@PathVariable Integer idOwner, @PathVariable Integer idNews){
-        ownerService.addNewsToOwner(idOwner, idNews);
+    public void addNewsToOwner(@PathVariable Integer id, @PathVariable Integer idNews){
+        ownerService.addNewsToOwner(id, idNews);
     }
 }

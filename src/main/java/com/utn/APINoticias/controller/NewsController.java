@@ -1,7 +1,6 @@
 package com.utn.APINoticias.controller;
 
 import com.utn.APINoticias.model.News;
-import com.utn.APINoticias.model.Owner;
 import com.utn.APINoticias.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +19,12 @@ public class NewsController {
         newsService.addNews(news);
     }
 
+    @GetMapping("/{id}")
+    public News getNewsById(@PathVariable Integer id){
+        return newsService.getById(id);
+    }
 
-    @DeleteMapping("/news/{id}")
+    @DeleteMapping("{id}")
     public void deleteNews(@PathVariable Integer id){
         newsService.deleteById(id);
     }

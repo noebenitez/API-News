@@ -28,7 +28,6 @@ public abstract class News {
     @Id
     private Integer id;
     private String title;
-    @DateTimeFormat(style = "dd-mm-yyyy")
     private LocalDate date;
     private String category;    //Business, science, etc.
 
