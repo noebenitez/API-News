@@ -1,9 +1,12 @@
 package com.utn.APINoticias.controller;
 
 import com.utn.APINoticias.model.News;
+import com.utn.APINoticias.model.Owner;
 import com.utn.APINoticias.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/news")

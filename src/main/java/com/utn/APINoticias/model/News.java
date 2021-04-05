@@ -5,12 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.AccessType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import java.time.LocalTime;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -27,7 +28,8 @@ public abstract class News {
     @Id
     private Integer id;
     private String title;
-    private LocalTime date;
+    @DateTimeFormat(style = "dd-mm-yyyy")
+    private LocalDate date;
     private String category;    //Business, science, etc.
 
     @AccessType(AccessType.Type.PROPERTY)
@@ -49,11 +51,11 @@ public abstract class News {
         this.title = title;
     }
 
-    public LocalTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
