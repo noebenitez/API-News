@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class OwnerService {
@@ -22,8 +23,11 @@ public class OwnerService {
         this.newsService = newsService;
     }
 
-    public List<Owner> getAll(){
-        return ownerRepository.findAll();
+    public List<Owner> getAll(String name){
+        if(Objects.isNull(name)){
+            return ownerRepository.findAll();
+        }
+        return ownerRepository.findByName(name);
     }
 
     public void add(Owner owner){

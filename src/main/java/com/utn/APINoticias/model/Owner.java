@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -12,8 +14,13 @@ import java.util.List;
 public class Owner {    //News' autor
 
     @Id
+    @GeneratedValue
     private Integer id;
+
+    @NotEmpty(message = "'Name' cannot be null or empty.")
     private String name;
+
+    @NotEmpty(message = "'Lastname' cannot be null or empty.")
     private String lastname;
 
     @OneToMany(fetch = FetchType.EAGER)

@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.AccessType;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 @Data
@@ -26,11 +25,18 @@ import java.time.LocalDate;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class News {
     @Id
+    @GeneratedValue
     private Integer id;
+
+    @NotEmpty(message = "'title' cannot be null or empty.")
     private String title;
+
     private LocalDate date;
+
+    @NotEmpty(message = "'category' cannot be null or empty.")
     private String category;    //Business, science, etc.
 
+    @NotEmpty(message = "'typeNews' cannot be null or empty.")
     @AccessType(AccessType.Type.PROPERTY)
     public abstract TypeNews typeNews();
 

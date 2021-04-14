@@ -15,8 +15,8 @@ public class OwnerController {
     OwnerService ownerService;
 
     @GetMapping
-    public List<Owner> getAll(){
-        return ownerService.getAll();
+    public List<Owner> getAll(@RequestParam(required = false) String name){
+        return ownerService.getAll(name);
     }
 
     @GetMapping("/{id}")
@@ -24,12 +24,13 @@ public class OwnerController {
         return ownerService.getById(id);
     }
 
+
     @PostMapping
     public void addOwner(@RequestBody Owner owner){
         ownerService.add(owner);
     }
 
-    @PutMapping("/owner/{id}")
+    @PutMapping("/{id}")
     public Owner updateOwner(@PathVariable Integer id, @RequestBody Owner newOwner){
         Owner owner = ownerService.getById(id);
         owner.setName(newOwner.getName());
@@ -48,4 +49,5 @@ public class OwnerController {
     public void addNewsToOwner(@PathVariable Integer id, @PathVariable Integer idNews){
         ownerService.addNewsToOwner(id, idNews);
     }
+    
 }
